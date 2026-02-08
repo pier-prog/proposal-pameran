@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposal Pameran Seni Rupa IX | Budaya Indonesia</title>
+    <title>Proposal Pameran Seni Rupa IX | Dev by Fardhan</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Metamorphous&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -26,22 +26,27 @@
             background-color: var(--dark-bali);
             color: #e0e0e0;
             overflow-x: hidden;
-            /* Motif Batik Background */
-            background-image: url('https://www.transparenttextures.com/patterns/batik-fabric.png');
+            /* Background diganti ke Pura Bali yang tinggi (Ulun Danu) */
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), 
+                        url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
         }
 
-        /* --- ORNAMEN DEKORATIF --- */
-        .ornamen-bali {
+        .batik-cloud {
             position: absolute;
-            width: 150px;
-            opacity: 0.4;
+            width: 250px;
+            opacity: 0.15;
             pointer-events: none;
             z-index: 1;
+            animation: cloudFloat 8s ease-in-out infinite;
         }
-        .top-right { top: 0; right: 0; transform: rotate(0deg); }
-        .bottom-left { bottom: 0; left: 0; transform: rotate(180deg); }
+        @keyframes cloudFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 20px); }
+        }
 
-        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -49,8 +54,9 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), 
-                        url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&q=80&w=1600');
+            /* Hero background menggunakan gambar Bali yang megah */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=1600');
             background-size: cover;
             background-attachment: fixed;
             border-bottom: 5px solid var(--gold);
@@ -61,112 +67,113 @@
             font-size: clamp(2rem, 6vw, 4.5rem);
             color: var(--gold);
             text-shadow: 0 0 20px rgba(223, 179, 58, 0.5);
-            margin-bottom: 10px;
         }
 
-        /* --- SECTION STYLING --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; position: relative; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 60 Indonesia; position: relative; }
 
         h2 {
             font-family: 'Metamorphous', cursive;
             color: var(--gold);
             text-align: center;
-            font-size: 2.2rem;
             margin-bottom: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
         }
 
-        h2::before, h2::after {
-            content: "";
-            height: 2px;
-            width: 50px;
-            background: var(--gold);
-        }
+        h2::before, h2::after { content: ""; height: 2px; width: 40px; background: var(--gold); }
 
         .glass-box {
             background: var(--glass);
             backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            padding: 40px;
+            padding: 35px;
             border-radius: 0 40px 0 40px;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             line-height: 1.8;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* --- KARYA CARDS --- */
         .karya-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
         .karya-card {
-            background: linear-gradient(145deg, #1a1a1a, #252525);
+            background: rgba(255,255,255,0.05);
             border: 1px solid var(--glass-border);
-            padding: 25px;
+            padding: 20px;
             text-align: center;
             border-radius: 15px;
-            transition: 0.4s;
+            transition: 0.3s;
         }
+        .karya-card:hover { transform: scale(1.05); background: var(--deep-red); }
 
-        .karya-card i { color: var(--gold); font-size: 2.5rem; margin-bottom: 15px; }
-        .karya-card:hover { transform: translateY(-10px); background: var(--deep-red); }
-
-        /* --- TABLE ANGGARAN --- */
-        .budget-table {
+        /* --- STYLING FOTO TIM --- */
+        .team-photo-container {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .budget-table th { background: var(--gold); color: black; padding: 15px; }
-        .budget-table td { padding: 15px; border-bottom: 1px solid var(--glass-border); }
-        .total-row { font-weight: bold; font-size: 1.3rem; color: var(--gold); }
+        .team-photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-        /* --- PANITIA LIST --- */
-        .panitia-grid {
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
             text-align: center;
         }
 
-        .panitia-item {
-            background: rgba(223, 179, 58, 0.1);
-            border: 1px dashed var(--gold);
-            padding: 15px;
-            border-radius: 10px;
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            display: block;
         }
 
-        /* --- ANIMASI FLOATING --- */
-        .float { animation: floating 3s ease-in-out infinite; }
-        @keyframes floating {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+        .budget-table { width: 100%; border-collapse: collapse; }
+        .budget-table th { background: var(--gold); color: black; padding: 12px; }
+        .budget-table td { padding: 12px; border-bottom: 1px solid var(--glass-border); }
 
-        footer {
-            background: #000;
-            padding: 40px;
+        .thanks-list {
             text-align: center;
-            border-top: 3px solid var(--gold);
+            color: var(--text-gold);
+            font-size: 1.1rem;
         }
+
+        .creator-footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        footer { background: #000; padding: 30px; text-align: center; border-top: 2px solid var(--gold); }
     </style>
 </head>
 <body>
 
-    <img src="https://i.ibb.co/L8N8Y8n/bali-ornament.png" class="ornamen-bali top-right" alt="ornamen">
-    
+    <img src="https://i.ibb.co/S6X8X8x/cloud-batik.png" class="batik-cloud" style="top: 15%; left: -50px;">
+    <img src="https://i.ibb.co/S6X8X8x/cloud-batik.png" class="batik-cloud" style="top: 60%; right: -50px; animation-delay: 3s;">
+
     <div class="hero">
         <div data-aos="zoom-in">
-            <h1 class="hero-title">Festival Pameran Seni Rupa</h1>
-            <p style="letter-spacing: 5px; color: var(--text-gold); font-weight: bold;">SISWA KELAS IX</p>
-            <div class="float" style="margin-top: 20px;">
-                <i class="fas fa-fan fa-spin" style="color: var(--gold); font-size: 2rem;"></i>
+            <h1 class="hero-title">Festival Seni Rupa</h1>
+            <p style="letter-spacing: 5px; color: var(--text-gold); font-weight: 800; margin-bottom: 15px;">SISWA KELAS IX</p>
+            <div style="background: var(--gold); color: black; padding: 5px 20px; font-weight: bold; border-radius: 50px; display: inline-block;">
+                16 / 02 / 2026
             </div>
         </div>
     </div>
@@ -177,120 +184,106 @@
             <h2>A. Latar Belakang</h2>
             <div class="glass-box">
                 Seni rupa merupakan salah satu media ekspresi yang krusial bagi peserta didik untuk mengembangkan ide, kreativitas, dan kepekaan rasa. Melalui kegiatan pameran, siswa kelas IX diharapkan mampu menampilkan karya terbaik mereka sekaligus melatih rasa percaya diri, tanggung jawab, serta kemampuan bekerja sama dalam tim.<br><br>
-                Festival Pameran Seni Rupa ini diselenggarakan sebagai wadah apresiasi terhadap karya seni siswa, baik dari teman sebaya, guru, maupun warga sekolah. Selain itu, kegiatan ini merupakan sarana pembelajaran kontekstual yang mengintegrasikan aspek pengetahuan, keterampilan, dan sikap secara nyata sesuai kurikulum seni budaya.
+                Festival Pameran Seni Rupa ini diselenggarakan sebagai wadah apresiasi terhadap karya seni siswa, baik dari teman sebaya, guru, maupun warga sekolah.
             </div>
         </section>
 
         <section data-aos="fade-right">
-            <h2>Dasar & Nama Kegiatan</h2>
-            <div class="glass-box" style="border-left: 5px solid var(--gold);">
-                <strong>Nama:</strong> "Festival Pameran Seni Rupa Siswa Kelas IX"<br>
+            <h2>B. Dasar & C. Nama</h2>
+            <div class="glass-box">
+                <strong>Nama Kegiatan:</strong> "Festival Pameran Seni Rupa Siswa Kelas IX"<br><br>
                 <strong>Dasar Kegiatan:</strong>
                 <ul>
-                    <li>Program Pembelajaran Mata Pelajaran Seni Budaya kelas IX.</li>
-                    <li>Kurikulum Nasional yang berlaku.</li>
-                    <li>Kalender Akademik dan Kegiatan Semester 2.</li>
+                    <li>Program Pembelajaran Seni Budaya kelas IX.</li>
+                    <li>Kurikulum Nasional & Kalender Akademik Semester 2.</li>
+                    <li>Hasil musyawarah guru pembimbing dan siswa.</li>
                 </ul>
             </div>
         </section>
 
         <section data-aos="zoom-in">
-            <div class="glass-box" style="text-align: center; background: var(--deep-red);">
-                <h3 style="color: var(--gold); font-family: 'Metamorphous';">TEMA KEGIATAN</h3>
-                <p style="font-size: 1.5rem; font-style: italic;">"Ekspresi Kreatif Remaja dalam Karya Seni Rupa"</p>
-                <small>(Mengomunikasikan jati diri dan kreativitas melalui karya)</small>
-            </div>
-        </section>
-
-        <section data-aos="fade-left">
-            <h2>E. Tujuan Kegiatan</h2>
-            <div class="karya-grid">
-                <div class="karya-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <p>Menumbuhkan kreativitas dan daya apresiasi seni.</p>
-                </div>
-                <div class="karya-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <p>Ruang ekspresi visual positif bagi siswa.</p>
-                </div>
-                <div class="karya-card">
-                    <i class="fas fa-users"></i>
-                    <p>Melatih kerja sama dalam organisasi.</p>
-                </div>
+            <h2>D. Tema Kegiatan</h2>
+            <div class="glass-box" style="text-align: center; background: var(--deep-red); border: 2px solid var(--gold);">
+                <h3 style="color: var(--gold);">"Ekspresi Kreatif Remaja dalam Karya Seni Rupa"</h3>
+                <p>Mengomunikasikan jati diri melalui karya seni.</p>
             </div>
         </section>
 
         <section data-aos="fade-up">
-            <h2>F. Bentuk Karya</h2>
+            <h2>F. Bentuk Kegiatan</h2>
             <div class="karya-grid">
                 <div class="karya-card"><h3>Gambar Ilustrasi</h3><p>Karya naratif visual</p></div>
-                <div class="karya-card"><h3>Seni Lukis</h3><p>Berbagai aliran di kanvas</p></div>
-                <div class="karya-card"><h3>Poster</h3><p>Desain grafis edukasi</p></div>
+                <div class="karya-card"><h3>Seni Lukis</h3><p>Ekspresi di atas kanvas</p></div>
+                <div class="karya-card"><h3>Poster</h3><p>Desain grafis edukatif</p></div>
                 <div class="karya-card"><h3>Rumah Stick</h3><p>Maket rumah tradisional</p></div>
             </div>
         </section>
 
         <section data-aos="flip-up">
-            <div class="glass-box" style="display: flex; justify-content: space-around; flex-wrap: wrap; border: 2px solid var(--gold);">
-                <div style="text-align: center;">
-                    <i class="fas fa-calendar-day fa-2x"></i>
-                    <p><strong>Hari/Tanggal</strong><br>[Isi Tanggal]</p>
-                </div>
-                <div style="text-align: center;">
-                    <i class="fas fa-clock fa-2x"></i>
-                    <p><strong>Waktu</strong><br>08.00 WIB - Selesai</p>
-                </div>
-                <div style="text-align: center;">
-                    <i class="fas fa-map-marked-alt fa-2x"></i>
-                    <p><strong>Tempat</strong><br>Kelas IX a Lantai 2</p>
+            <h2>H. Waktu & Tempat</h2>
+            <div class="glass-box">
+                <div class="info-grid">
+                    <div class="info-item"><i class="fas fa-calendar-check"></i><strong>Tanggal</strong><p>16 Februari 2026</p></div>
+                    <div class="info-item"><i class="fas fa-clock"></i><strong>Waktu</strong><p>08.00 WIB - Selesai</p></div>
+                    <div class="info-item"><i class="fas fa-school"></i><strong>Tempat</strong><p>Kelas IX a Lantai 2</p></div>
                 </div>
             </div>
         </section>
 
         <section data-aos="fade-up">
             <h2>I. Susunan Panitia</h2>
-            <div class="panitia-grid">
-                <div class="panitia-item"><strong>Pelindung</strong><br>Kepala Sekolah</div>
-                <div class="panitia-item"><strong>Ketua</strong><br>Syafiq</div>
-                <div class="panitia-item"><strong>Wakil</strong><br>Aul</div>
-                <div class="panitia-item"><strong>Sekretaris</strong><br>Nizzam</div>
-                <div class="panitia-item"><strong>Bendahara</strong><br>Jaya</div>
+            <div class="glass-box">
+                <div class="team-photo-container" data-aos="zoom-in">
+                    <img src="https://lh3.googleusercontent.com/d/1XyL3M8828pB937fH9x_fH-Uv74_qjE3q" alt="Foto Tim Pameran">
+                </div>
+                
+                <div class="karya-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div>
+                        <strong>Ketua:</strong> Syafiq<br>
+                        <strong>Wakil:</strong> Fardhan Aulia<br>
+                        <strong>Sekretaris:</strong> Nizzam<br>
+                        <strong>Bendahara:</strong> Jaya
+                    </div>
+                    <div style="font-size: 0.9rem;">
+                        <strong>Seksi-seksi:</strong><br>
+                        Acara, Perlengkapan, Dekorasi, Dokumentasi, Publikasi, Konsumsi, Keamanan.
+                    </div>
+                </div>
             </div>
         </section>
 
         <section data-aos="fade-up">
-            <h2>K. Rencana Anggaran</h2>
+            <h2>K. Anggaran Biaya</h2>
             <div class="glass-box">
                 <table class="budget-table">
-                    <thead>
-                        <tr><th>Uraian</th><th>Biaya</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Dekorasi & Perlengkapan</td><td>Rp350.000</td></tr>
-                        <tr><td>Administrasi (Undangan/Brosur)</td><td>Rp20.000</td></tr>
-                        <tr><td>Konsumsi Panitia</td><td>Rp200.000</td></tr>
-                        <tr><td>Dokumentasi Digital</td><td>Rp10.000</td></tr>
-                        <tr class="total-row"><td>TOTAL</td><td>Rp580.000</td></tr>
-                    </tbody>
+                    <tr><td>Dekorasi & Perlengkapan</td><td>Rp350.000</td></tr>
+                    <tr><td>Administrasi</td><td>Rp20.000</td></tr>
+                    <tr><td>Konsumsi Panitia</td><td>Rp200.000</td></tr>
+                    <tr><td>Dokumentasi Digital</td><td>Rp10.000</td></tr>
+                    <tr style="color: var(--gold); font-weight: 800;"><td>TOTAL</td><td>Rp580.000</td></tr>
                 </table>
             </div>
         </section>
 
         <section data-aos="zoom-in">
-            <h2>L. Penutup</h2>
-            <div class="glass-box" style="text-align: center;">
-                <p>Demikian proposal Festival Pameran Seni Rupa Kelas IX ini kami susun. Besar harapan kami agar kegiatan ini dapat terlaksana dengan baik dan mendapatkan dukungan dari berbagai pihak.</p>
-                <div style="display: flex; justify-content: space-between; margin-top: 50px;">
-                    <div>Mengetahui,<br><br><br>( ........................... )<br>Kepala Sekolah</div>
-                    <div>Ketua Panitia,<br><br><br>( ........................... )<br>Syafiq</div>
-                </div>
+            <h2>✨ Special Thanks To</h2>
+            <div class="glass-box thanks-list">
+                <p><i class="fas fa-star"></i> Allah SWT</p>
+                <p>Kepala Sekolah & Wakil Kepala Sekolah</p>
+                <p><strong>Syafiq</strong> (Ketua Kelompok)</p>
+                <p><strong>Fardhan Aulia</strong> (Wakil Ketua)</p>
+                <p><strong>Muhammad Fardhan</strong> (Web Developer)</p>
+                <p>Serta Seluruh Anggota Kelompok</p>
             </div>
         </section>
 
+        <div class="creator-footer">
+            <p><i class="fas fa-terminal"></i> Website Crafted by <strong>Muhammad Fardhan</strong></p>
+        </div>
     </div>
 
     <footer>
-        <p>Seni Budaya Indonesia &copy; 2024 | Pameran Seni Rupa Kelas IX</p>
+        <p>&copy; 2026 Festival Seni Rupa IX | Seni Budaya Indonesia</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
